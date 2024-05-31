@@ -1,5 +1,6 @@
 form{
-    margin: 1em;
+    margin: 2em;
+    padding: 2em;
 }
 
 .mensagem{
@@ -74,9 +75,9 @@ div {
 }
 
 .centralizar{
-    margin: 15px auto;
+    margin: 25px auto;
     width: 20%;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }

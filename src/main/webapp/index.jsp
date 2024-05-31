@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="WEB-INF/cabecalho.jsp" %>
-<link rel="stylesheet" href="https://getbootstrap.com/docs/5.2/getting-started/introduction/"/>
 
 <%
     Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");

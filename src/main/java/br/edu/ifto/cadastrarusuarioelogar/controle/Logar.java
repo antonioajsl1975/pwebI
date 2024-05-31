@@ -30,18 +30,19 @@ public class Logar extends HttpServlet {
                 for (Usuario u : usuarios) {
                     if (u.getLogin().equals(login) && u.getSenha().equals(senha)) {
                         session.setAttribute("usuarioLogado", u);
-//                        response.sendRedirect("relatorio");
-                        response.sendRedirect("index.jsp?mesnagem=" + URLEncoder.encode("Logado com sucesso!"));
-
+                        request.setAttribute("mensagem", "Logado com sucesso!");
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
                         logou = true;
                         break;
                     }
                 }
                 if (!logou) {
-                    response.sendRedirect("index.jsp?mensagem=" + URLEncoder.encode("Login ou senha incorretos!"));
+                    request.setAttribute("mensagem", "Login ou senha incorretos!");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
             } else {
-                response.sendRedirect("index.jsp?mensagem=" + URLEncoder.encode("Você precisa informar o login e a senha!"));
+                request.setAttribute("mensagem", "Você precisa informar o login e a senha");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
             response.sendRedirect("index.jsp?mensagem=" + URLEncoder.encode("Já está logado!"));

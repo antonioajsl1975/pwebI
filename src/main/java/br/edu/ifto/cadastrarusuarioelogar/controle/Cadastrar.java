@@ -34,12 +34,15 @@ public class Cadastrar extends HttpServlet {
             if (!usuarioExiste) {
                 Usuario u = new Usuario(pegarNovoId(), nome, login, senha);
                 usuarios.add(u);
-                response.sendRedirect("index.jsp?mensagem="+ URLEncoder.encode("Cadastrado com sucesso!", "UTF-8"));
-            }else
-                response.sendRedirect("index.jsp?mensagem="+URLEncoder.encode("ERRO! Já existe um usuário com esse login", "UTF-8"));
+                request.setAttribute("mensagem", "Cadastrado com sucesso!");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            } else
+                request.setAttribute("mensagem", "Já existe um usuário com esse login!");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
 
         }else{
-            response.sendRedirect("index.jsp?mensagem="+URLEncoder.encode("Você precisa informar todos os dados do usuário!"));
+            request.setAttribute("mensagem", "Você precisa informar todos os dados do usuário!");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 
